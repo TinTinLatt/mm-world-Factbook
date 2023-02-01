@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+.containerquiz
+{
+    height: 1000px;
+
+    position: absolute;
+    border: 1px solid #08038C;
+
+    /*background-color: silver;*/
+    padding-left: 300px;
+    padding-right: 100px;
+    display: inline-block;
+
+    
+    padding-top: 50px;
+
+
+}
+
+.title
+{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: #08038C;
+}
+.question
+{
+
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    background: rgba(76, 175, 80, 0.3)
+    background: #333333;
+    opacity: 0.6;
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+    color: #f6f6f6;
+    padding-right: 350px;
+    padding-left: 300px;
+
+
+
+}
+.option
+{
+    width: 470px;
+    display: inline-block;
+    padding: 10px 0 10px 15px;
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 10px 0 10px 10px;
+    color: #000000;
+    border-radius: 20px;
+}
+.option:hover
+{
+    /*background: #08038C;*/
+    background-color: red;
+    color: #f6f6f6f;
+
+
+
+}
+    
+.next-btn
+{
+    border: none;
+    outline: none;
+    background: rgba(255, 25, 255, 0.5);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    color: black;
+    background-color: #333333;
+
+
+}
+.next-btn:hover
+{
+    /*background: #08038C;*/
+    color: #f6f6f6;
+     background-color: rgb(255, 0, 0);
+
+
+}
+.result
+{
+    height: 100px;
+    text-align: center;
+    font-size: 75px;
+}
+.option input:checked .option
+{
+    background: #08038C;
+    color: #000;
+}
+.next-btn
+{
+    margin-right: 150px;
+    color: white;
+    height: 50px;
+    width: 200px;
+    
+}
+
+.rowtop
+{
+    background-color: black;
+    color: white;
+
+}
+.headerindex
+{
+    font-size: 60px;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+   
+    margin: auto;
+
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+ </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+
+<div class="quiz">
+<center>
+<button class="button button3"><a href="/quiz" >Try the Quizz</button>
+
+
+<button class="button button3">  <a href="/createcountry">Create New Country</a> </button>  
+</center>
+</div>
+
+
+
+
+
+
+<!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
+<br><br>
+<center><button id="myBtn" class="button button3">Rank Information</button>
+</center>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!-- <p>Some text in the Modal..</p> -->
+<p><h2 align="center" style="font-style: italic;color: orange">{{bigpop}} is the biggest Population Country in the World..</h2 ></p>
+
+  </div>
+
+</div>
+
+  <script type="text/javascript">
+  	
+  	// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+  </script>
+
+
+ </head>
+ </body>
+ </html>
+{% endblock %}

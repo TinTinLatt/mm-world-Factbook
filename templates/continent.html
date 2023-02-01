@@ -1,0 +1,67 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+
+
+<style type="text/css">
+body
+{
+	background-color: silver;
+}
+
+}
+ .list {
+    text-decoration: none;
+    color: red;
+   	font-size: 20px;
+    padding: 20px;
+    display:inline-block;
+}
+</style> 
+
+
+
+
+
+<br>
+<center><button class="button button3"><a href="/quiz" style="text-decoration: none">Try the Quizz</a></button>
+
+<h1 align="center">World Factbook, Continent: {{name}}</h1>
+<br>
+<br>
+<br>
+<ol >
+	
+	{% for c in w %}
+	<div class="col-md-4" >
+		<img src="{{c.flag}}" width="250px" height="150px" >
+
+		<br><br>
+
+		<a href="/country/{{c.id}}" class="list" >{{c.name}}</a><br><br>
+	</div>
+	{% endfor %}
+
+	
+	
+</ol>	
+</body>
+</html>
+{% endblock %}  

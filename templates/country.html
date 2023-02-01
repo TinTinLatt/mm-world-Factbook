@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<style type="text/css">
+
+	body
+	{
+		background-color: silver;
+	}
+  .div
+  {
+    text-align: center;
+  }
+</style>
+
+<body>
+<h1 style="text-align: center;">World Factbook, Continent: {{c.name}}</h1>
+
+
+<div class="container" style="line-height: 50px">
+<center><img src="{{c.flag}}" width="300px" height="200px"></center>
+<div style="text-align: center;">
+
+
+<table align="center">
+	<tr><td style="padding-right: 80px">Name</td><td>{{c.name}}</td></tr>
+	<tr><td style="padding-right: 80px">Continent</td><td>{{c.continent}}</td></tr>
+	<tr><td style="padding-right: 80px">Capital</td><td>{{c.capital}}</td></tr>
+	<tr><td style="padding-right: 80px">Population</td><td>{{c.population | nf}}</td></tr>
+	<tr>
+		<td style="padding-right: 80px">GDP</td>
+		<td>
+			{% if c.gdp > 1000000000 %}
+				USD {{c.gdp/1000000000}} billion
+
+			{% elif c.gdp > 1000000 %}
+				USD {{c.gdp/1000000}} million
+			{% else %}
+				USD {{c.gdp/1000}} thousand
+			{% endif %}
+		</td>
+	</tr>
+
+	<tr><td style="padding-right: 80px">Area</td><td>{{c.area | nf}} km<sup>2</sup></td></tr>
+
+
+  {% for c in w %}
+        <li><a href="/country/{{c.id}}" style="text-decoration: none;"><img src="{{c.flag}}" width="35px" height="25px" style="padding-right: 00px">{{c.name}}</a></li>
+
+    {% endfor %}
+
+   </table>	
+</div>
+<div align="center">
+
+	
+	<button class="btn" ><a  href="/country/{{c.id - 1}}">Previous</a>
+	</button>
+	<button class="btn" ><a  href="/country/{{c.id + 1}}" >Next</a></button>
+
+	<button class="btn" ><a  href="/editcountryByName/{{c.name}}" >Edit</a></button>
+
+<br>
+	<button class="btn" ><a class="buton" href="/delete/{{c.id}}" Onclick="ConfirmDelete()">Delete</a></button>
+	
+	<button class="btn" ><a class="buton" href="/quiz" > Try the Quizz</a></td></tr></button>
+	
+</div>
+</div>
+
+<script>
+function ConfirmDelete()
+{
+	window.alert('Sucessfully Deleted!!!');
+  
+}
+</script>
+
+
+
+</body>
+</html>
+
+
+{% endblock %}  

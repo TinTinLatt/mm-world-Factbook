@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+<style type="text/css">
+	containerquiz
+{
+    height: 1000px;
+
+    position: absolute;
+    border: 1px solid #08038C;
+
+    /*background-color: silver;*/
+    padding-left: 300px;
+    padding-right: 100px;
+    display: inline-block;
+
+    
+    padding-top: 50px;
+
+
+
+
+    
+
+
+
+}
+
+.title
+{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: #08038C;
+}
+.question
+{
+    padding: 10px;
+    width: 30%;
+    text-align: center;
+    background: rgba(76, 175, 80, 0.3)
+    font-size: 22px;
+    /*background: #08038C;*/
+    background: #333333;
+    opacity: 0.6;
+
+    border-radius: 20px;
+    margin: 10px 0 10px 0;
+    color: #f6f6f6;
+    padding-right: 350px;
+    padding-left: 300px;
+
+
+
+}
+.option
+{
+    width: 470px;
+    display: inline-block;
+    padding: 10px 0 10px 15px;
+    vertical-align: middle;
+    background: rgba(255, 255, 255, 0.5);
+    margin: 10px 0 10px 10px;
+    color: #000000;
+    border-radius: 20px;
+}
+.option:hover
+{
+    /*background: #08038C;*/
+    background-color: red;
+    color: #f6f6f6f;
+
+
+
+}
+    
+.next-btn
+{
+    border: none;
+    outline: none;
+    background: rgba(255, 25, 255, 0.5);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    color: black;
+    background-color: #333333;
+
+
+}
+.next-btn:hover
+{
+    /*background: #08038C;*/
+    color: #f6f6f6;
+     background-color: rgb(255, 0, 0);
+
+
+}
+.result
+{
+    height: 100px;
+    text-align: center;
+    font-size: 75px;
+}
+.option input:checked .option
+{
+    background: #08038C;
+    color: #000;
+}
+.next-btn
+{
+    margin-right: 150px;
+    color: white;
+    height: 50px;
+    width: 200px;
+    
+}
+
+.rowtop
+{
+    background-color: black;
+    color: white;
+
+}
+.headerindex
+{
+    font-size: 60px;
+}
+
+</style>
+
+</head>
+
+
+<!-- '''ref https://www.tutorialspoint.com/python/number_shuffle.htm''' -->
+
+<body class="bodyquiz">
+
+
+
+	<div id="quizContainer" class='containerquiz'>
+
+	<form name="myform">
+		<!-- <br><br><br><br><br><br><br><br><br><br><br> -->
+
+	
+
+	<div class="title">World Factbook Quiz</div>
+<br><br>
+	
+	<div id="question" class="question">1. What is the capital of {{stem1.name}}?</div>
+
+	{% for a in distractors %}
+
+	
+	<label class="option"><input type="radio" name="q1" value="{{a.capital}}"><span id="opt1">{{a.capital}}</span></label>
+	
+	{% endfor %}
+	    
+<br><br>
+
+
+	<div id="question" class="question">2. What is the population of {{stem2.name}}?</div>
+
+	{% for a in distractors %}
+
+	
+	<label class="option"><input type="radio" name="q2" value="{{a.population}}"><span id="opt1">{{a.population}}</span></label>
+	
+	{% endfor %}
+		 
+	<br><br>
+
+	<div id="question" class="question">3. What is the area of {{stem3.name}}?</div>
+
+	{% for a in distractors %}
+
+	
+	<label class="option"><input type="radio" name="q3" value="{{a.area }}"><span id="opt1">{{a.area }}</span></label>
+	
+	{% endfor %}
+
+	
+
+</a>
+</button>	
+	
+	<button id="nextButton" class="next-btn" >Next</button>
+
+	<button id="nextButton" class="next-btn" onclick="check()">submit</button>
+	<input type="reset" id="nextButton" class="next-btn" value="Clear">
+</form>
+
+	<!-- <button id="nextButton" class="next-btn" >Next</button> -->
+	
+
+
+
+
+
+</form>
+
+
+
+  </div>
+</div>
+	
+</body>
+
+<script type="text/javascript">
+	function check()
+	{
+		var q1=document.myform.q1.value;
+		var q2=document.myform.q2.value;
+		var q3=document.myform.q3.value;
+		count=0;
+		incorrect=0;
+						
+			if(q1=='{{stem1.capital}}')
+			{
+				window.alert('Answer 1. Correct Capital')
+				count++;
+
+			}	
+			else
+			{
+				window.alert('Answer 1. Incorrect Capital, correct answer is {{stem1.capital}}');
+				incorrect++;
+
+			}
+			if(q2=='{{stem2.population}}')
+			{
+				window.alert('Answer 2. Correct Population')
+				count++;		
+			}
+			else
+			{
+				window.alert('Answer 2. Incorrect Population, correct answer is {{stem2.population}}')
+				incorrect++;
+			}	
+			if(q3=='{{stem3.area}}')
+			{
+				window.alert('Answer 3. Correct Area')
+				count++;		
+			}
+			else
+			{
+				window.alert('Answer 3. incorrect Area,  Correct answer is {{stem3.area}}')
+				incorrect++;
+			} 	
+		
+		
+			alert( + count + " correct answer." ); 
+			alert( + incorrect + ' incorrect answer.');
+			 // alert('For customer #' + customerNo + ' contract not found.\nContact the sales Support at 1800-555-5242');
+
+	}
+</script>
+
+
+
+
+	
+</html>	
+
+{% endblock %}  
